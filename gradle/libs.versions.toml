@@ -1,0 +1,30 @@
+
+[versions]
+kotlin-version = "2.1.0"
+ktor-version = "3.0.3"
+logback-version = "1.5.15"
+twirl-version = "2.0.7"
+scala3-version = "3.6.2"
+gretty-version = "4.0.3"
+
+[libraries]
+ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor-version" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback-version" }
+ktor-server-test-host = { module = "io.ktor:ktor-server-test-host-jvm", version.ref = "ktor-version" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin-version" }
+
+# tomcat jakarta
+ktor-server-tomcat-jakarta = { module = "io.ktor:ktor-server-tomcat-jakarta-jvm", version.ref = "ktor-version" }
+ktor-server-servlet-jakarta = { module = "io.ktor:ktor-server-servlet-jakarta-jvm", version.ref = "ktor-version" }
+jakarta-servlet-api = { module = "jakarta.servlet:jakarta.servlet-api", version = "6.1.0" }
+
+# Scala Code
+twirl-api = { module = "org.playframework.twirl:twirl-api_3", version.ref = "twirl-version" }
+scala3-library = { module = "org.scala-lang:scala3-library_3", version.ref = "scala3-version" }
+commons-collections = { module = "commons-collections:commons-collections", version = "3.2.2" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-version" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktor-version" }
+twirl = { id = "org.playframework.twirl", version.ref = "twirl-version" }
+gretty = { id = "org.gretty", version.ref = "gretty-version" }
