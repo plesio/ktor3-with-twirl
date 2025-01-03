@@ -1,36 +1,36 @@
 # ktor3-with-twirl
 
-�x�[�X�� [Ktor Project Generator](https://start.ktor.io) �ō쐬���āA�����Ɏ���������B
+ベースは [Ktor Project Generator](https://start.ktor.io) で作成して、そこに手を加えた。
 
-## �\���ɂ���
+## 構成について
 
-* �r���h�V�X�e��
+* ビルドシステム
   * Gradle + build.gradle.kts
-* �t���[�����[�N
+* フレームワーク
   * ktor 3.x
-* HTML�e���v���[�g
+* HTMLテンプレート
   * Twirl
-    * ���� Play Framework �̕W��Template Engine�B
-    * Scala���Ȃ̂ƁAPlay�ȊO�ł܂Ƃ��ȘA�g�v���O�C����񋟂��Ă����͂Ȃ����߁A�C���̓��B
-    * ������� ktor �Ƃ��ȒP�ɂ͘A�g�ł��Ȃ��B
+    * 所謂 Play Framework の標準Template Engine。
+    * Scala製なのと、Play以外でまともな連携プラグインを提供している例はないため、修羅の道。
+    * もちろん ktor とも簡単には連携できない。
 * Java/JDK
   * 11 / 17
 
 ## Building & Running
 
-### �r���h����ꍇ
+### ビルドする場合
 
 | Task                                      | Description                                                                         |
 |-------------------------------------------|-------------------------------------------------------------------------------------|
-| `./gradlew compileScala -x compileKotlin` | Scala, Twirl �� Kotlin ������s�r���h���Ȃ��Ƃ����Ȃ��� compileKotlin���ˑ��ɂ��邽�߁A���̃R�}���h�Ŗ������r���h��ʉ߂�����B |
-| `./gradlew war`                           | ��� ������ compileScala ��ʂ�������Ȃ� compileKotlin ���ʂ邽�߁A����Ńr���h�ł���B                         |
+| `./gradlew compileScala -x compileKotlin` | Scala, Twirl は Kotlin よりも先行ビルドしないといけないが compileKotlinが依存にいるため、このコマンドで無理やりビルドを通過させる。 |
+| `./gradlew war`                           | 先に 調整版 compileScala を通した直後なら compileKotlin が通るため、これでビルドできる。                         |
 
-### Run����ꍇ
+### Runする場合
 
 | Task                                      | Description                                                 |
 |-------------------------------------------|-------------------------------------------------------------|
 | `./gradlew compileScala -x compileKotlin` | _                                                           |
-| `./gradlew runAppWar`                     | ��� ������ compileScala ��ʂ�������Ȃ� compileKotlin ���ʂ邽�߁A����Ńr���h�ł���B |
+| `./gradlew appRunWar`                     | 先に 調整版 compileScala を通した直後なら compileKotlin が通るため、これでビルドできる。 |
 
 If the server starts successfully, you'll see the following output:
 
@@ -39,11 +39,11 @@ If the server starts successfully, you'll see the following output:
 2024-12-04 14:32:45.682 [main] INFO  Application - Responding at http://0.0.0.0:8080
 ```
 
-## ��������
+## 制限事項
 
-�߂�����r���h�Ɏ��Ԃ������邩���B
+めっちゃビルドに時間がかかるかも。
 
-* �o�b�e���[�쓮�m�[�gPC + WSL2 + Win�̈�̃f�[�^�̈�� build �� 4��������ƁB
-  * �iWS2�{Win�̈悾���炩���H�j
-* ���l�ɁA�o�b�e���[�쓮��Ԃ̃m�[�gPC + CMD + Java11 �� build �� 51�b�B
-  * �f�B�X�NI/O���x���������Ă�1���߂��͂������Ă��܂������B
+* バッテリー駆動ノートPC + WSL2 + Win領域のデータ領域で build が 4分ちょっと。
+  * （WS2＋Win領域だからかも？）
+* 同様に、バッテリー駆動状態のノートPC + CMD + Java11 で build で 51秒。
+  * ディスクI/O速度を解決しても1分近くはかかってしまいそう。
