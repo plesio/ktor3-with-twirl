@@ -30,7 +30,8 @@
 | Task                                      | Description                                                 |
 |-------------------------------------------|-------------------------------------------------------------|
 | `./gradlew compileScala -x compileKotlin` | _                                                           |
-| `./gradlew appRunWar`                     | 先に 調整版 compileScala を通した直後なら compileKotlin が通るため、これでビルドできる。 |
+| `./gradlew war`                           | _                         |
+| `./gradlew appRunWar`                     | 正しくビルドできていたらこれでWarを使って起動テストできる。 |
 
 If the server starts successfully, you'll see the following output:
 
